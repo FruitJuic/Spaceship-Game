@@ -1203,9 +1203,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1305078109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d92f68113409191b59cbc8bfcb06c437, type: 3}
+  m_Script: {fileID: 11500000, guid: db239b3a7de428d0a8ace492faf02b48, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  m_EditorClassIdentifier: Assembly-CSharp::ShipTerminal
 --- !u!1 &1326322972
 GameObject:
   m_ObjectHideFlags: 0

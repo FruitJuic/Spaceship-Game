@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,6 +9,14 @@ public class PlayerInteract : MonoBehaviour
     public float interactDistance = 5f;
     public GameObject currentTarget = null;
     public List<GameObject> interactables = new List<GameObject>();
+
+    private void OnInteract(InputValue inputValue)
+    {
+        if(currentTarget != null)
+        {
+            currentTarget.SendMessage("interact");
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,8 +38,7 @@ public class PlayerInteract : MonoBehaviour
 
         // if raycast hits, it checks if it hit an object with the tag Player
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactDistance)     &&
-                    hit.collider.gameObject.CompareTag("Interactable") &&
-                    (hit.collider.gameObject.transform.position - transform.position).magnitude < interactDistance)
+                    interactables.Contains(hit.collider.gameObject))
         {
             currentTarget = hit.collider.gameObject;
             return;

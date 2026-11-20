@@ -19,4 +19,9 @@ public class Interactable : MonoBehaviour
     {
         
     }
+
+    public void interact()
+    {
+        Debug.Log(gameObject.name + " was interacted with!");
+    }
 }
