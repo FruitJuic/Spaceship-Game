@@ -24,6 +24,19 @@ public class PlayerInteract : MonoBehaviour
 
     private void GetTarget()
     {
+
+        RaycastHit hit;
+
+        // if raycast hits, it checks if it hit an object with the tag Player
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactDistance)     &&
+                    hit.collider.gameObject.CompareTag("Interactable") &&
+                    (hit.collider.gameObject.transform.position - transform.position).magnitude < interactDistance)
+        {
+            currentTarget = hit.collider.gameObject;
+            return;
+        }
+
+
         GameObject candidate = null;
         float currentClosest = 2 * interactDistance;
 
