@@ -24,6 +24,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = new Vector3(movementVector.x * 5, rb.linearVelocity.y, movementVector.y * 5);
+        rb.linearVelocity = transform.rotation * new Vector3(movementVector.x * speed, rb.linearVelocity.y, movementVector.y * speed);
     }
 }
