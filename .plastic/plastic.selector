@@ -1,4 +1,0 @@
-repository "Spaceship Game/Spaceship Game@1376033292805@cloud"
-  path "/"
-    br "/main"
-    co "/main"

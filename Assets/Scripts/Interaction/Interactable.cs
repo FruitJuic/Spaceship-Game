@@ -1,0 +1,27 @@
+using UnityEngine;
+
+public class Interactable : MonoBehaviour
+{
+
+    void Awake()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>().RegisterInteractable(gameObject);
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void interact()
+    {
+        Debug.Log(gameObject.name + " was interacted with!");
+    }
+}
