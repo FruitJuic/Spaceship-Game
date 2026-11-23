@@ -9,12 +9,24 @@ public class PlayerInteract : MonoBehaviour
     public float interactDistance = 5f;
     public GameObject currentTarget = null;
     public List<GameObject> interactables = new List<GameObject>();
+    public ScreenManager screenManager;
+
 
     private void OnInteract(InputValue inputValue)
     {
-        if(currentTarget != null)
+        if(GetComponent<PlayerMovement>().inLockingMenu)
         {
-            currentTarget.SendMessage("interact");
+            if(screenManager.activeScreen.menu)
+            {
+                screenManager.activeScreen.activeInteract();
+            }
+        }
+        else
+        {
+            if(currentTarget != null)
+            {
+                currentTarget.SendMessage("interact");
+            }
         }
     }
 

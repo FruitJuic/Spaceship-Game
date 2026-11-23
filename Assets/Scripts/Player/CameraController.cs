@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     Vector2 lookValue = Vector2.zero;
 
     bool lockedCursor = true;
+    PlayerMovement playerMovement;
 
     public void OnLook(InputValue inputValue)
     {
@@ -20,6 +21,7 @@ public class CameraController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerMovement = GetComponent<PlayerMovement>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -27,6 +29,8 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(playerMovement.inLockingMenu) return;
+
         cameraVerticalRotation -= lookValue.y * mouseSensitivity;
         cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -90f, 90f);
         camera.localEulerAngles = Vector3.right * cameraVerticalRotation;

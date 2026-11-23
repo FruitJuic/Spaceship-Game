@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
-
+    public bool inLockingMenu = false;
 
     private Vector2 movementVector;
     private Rigidbody rb;
@@ -24,6 +24,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = transform.rotation * new Vector3(movementVector.x * speed, rb.linearVelocity.y, movementVector.y * speed);
+        if(!inLockingMenu)
+        {
+            rb.linearVelocity = transform.rotation * new Vector3(movementVector.x * speed, rb.linearVelocity.y, movementVector.y * speed);
+        }
+        else
+        {
+            rb.linearVelocity = Vector3.zero;
+        }
     }
 }
