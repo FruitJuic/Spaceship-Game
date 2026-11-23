@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ScreenManager : MonoBehaviour
 {
-    public GameObject NORMAL;
-    public GameObject[] screens;
+    public Screen NORMAL;
+    public Screen[] screens;
 
-
+    public Screen activeScreen;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,23 +19,21 @@ public class ScreenManager : MonoBehaviour
 
     }
 
-    public void ActivateScreen(GameObject targetScreen)
+    public void ActivateScreen(Screen targetScreen)
     {
-        foreach(GameObject screen in screens)
+        foreach(Screen screen in screens)
         {
-            screen.SetActive(false);
+            screen.gameObject.SetActive(false);
         }
 
-        targetScreen.SetActive(true);
+        targetScreen.gameObject.SetActive(true);
+
+        Cursor.lockState = targetScreen.cursorMode;
+        activeScreen = targetScreen;
     }
 
     public void CloseScreen()
     {
-        foreach(GameObject screen in screens)
-        {
-            screen.SetActive(false);
-        }
-
-        NORMAL.SetActive(true);
+        ActivateScreen(NORMAL);
     }
 }
