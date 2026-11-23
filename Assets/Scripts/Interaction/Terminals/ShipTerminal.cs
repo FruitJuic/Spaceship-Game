@@ -21,6 +21,6 @@ public class ShipTerminal : MonoBehaviour
 
     public void interact()
     {
-        Debug.Log("Ship Terminal Opened");
+        transform.position = new Vector3(transform.position.x  + 1, transform.position.y, transform.position.z);
     }
 }

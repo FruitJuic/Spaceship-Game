@@ -40,7 +40,7 @@ public class PlayerInteract : MonoBehaviour
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactDistance)     &&
                     interactables.Contains(hit.collider.gameObject))
         {
-            currentTarget = hit.collider.gameObject;
+            SetTarget(hit.collider.gameObject);
             return;
         }
 
@@ -60,16 +60,23 @@ public class PlayerInteract : MonoBehaviour
 
         if(currentClosest < interactDistance)
         {
-            currentTarget = candidate;
+            SetTarget(candidate);
         }
         else
         {
-            currentTarget = null;
+            SetTarget(null);
         }
     }
 
     public void RegisterInteractable(GameObject interactable)
     {
         interactables.Add(interactable);
+    }
+
+    void SetTarget(GameObject target)
+    {
+        // Disable old target text if !null
+        currentTarget = target;
+        // Enable new target text if !null
     }
 }
